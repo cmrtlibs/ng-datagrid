@@ -1,0 +1,112 @@
+<div *ngIf="toolbar && (toolbarPosition === 'top' || toolbarPosition === 'both')" class="ng-dg-toolbar top">
+  <ng-template [ngTemplateOutletContext]="{}" [ngTemplateOutlet]="toolbar.templateRef"></ng-template>
+</div>
+
+<div [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth" class="ng-dg-header">
+  <table>
+    <colgroup>
+      <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
+    </colgroup>
+
+    <thead>
+    <tr>
+      <th *ngFor="let column of columns.toArray() || []">
+        <ng-container *ngIf="!column.headerTemplate">{{column.title}}</ng-container>
+        <ng-container *ngIf="column.headerTemplate">
+          <ng-template [ngTemplateOutletContext]="{}"
+                       [ngTemplateOutlet]="column.headerTemplate.templateRef"></ng-template>
+        </ng-container>
+      </th>
+    </tr>
+    </thead>
+
+  </table>
+</div>
+
+<div #containerElem class="ng-dg-container">
+
+  <table>
+
+    <colgroup>
+      <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
+    </colgroup>
+
+    <tbody>
+
+    <tr *ngIf="editOptions && editOptions.isNew" class="ng-dg-alt ng-dg-editable">
+      <td *ngFor="let column of columns.toArray()">
+        <ng-container *ngIf="!column.editTemplate && !column.field">
+          <ng-template [ngTemplateOutletContext]="{$implicit: undefined, rowIndex: -1, column: column}"
+                       [ngTemplateOutlet]="column.columnTemplate.templateRef"></ng-template>
+        </ng-container>
+        <ng-container *ngIf="!column.editTemplate && !!column.field && editOptions.formGroup.get(column.field)">
+          <input [formControl]="editOptions.formGroup.get(column.field)">
+        </ng-container>
+        <ng-container *ngIf="column.editTemplate">
+          <ng-template
+            [ngTemplateOutletContext]="{$implicit: editOptions.formGroup, rowIndex: editOptions.rowIndex, column: column}"
+            [ngTemplateOutlet]="column.editTemplate.templateRef"></ng-template>
+        </ng-container>
+      </td>
+    </tr>
+
+    <tr *ngFor="let dataItem of data || []; let i = index"
+        [ngClass]="{'ng-dg-alt': i % 2, 'ng-dg-editable': editOptions?.rowIndex === i}">
+      <td *ngFor="let column of columns.toArray()">
+        <ng-container
+          *ngIf="!editOptions || editOptions.rowIndex !== i || (!editOptions.formGroup.get(column.field) && !column.editTemplate)">
+          <ng-container *ngIf="!column.columnTemplate">{{getField(dataItem, column.field)}}</ng-container>
+          <ng-container *ngIf="column.columnTemplate">
+            <ng-template [ngTemplateOutletContext]="{$implicit: dataItem, rowIndex: i, column: column}"
+                         [ngTemplateOutlet]="column.columnTemplate.templateRef"></ng-template>
+          </ng-container>
+        </ng-container>
+        <ng-container
+          *ngIf="editOptions && editOptions.rowIndex === i && (editOptions.formGroup.get(column.field) || column.editTemplate)">
+          <ng-container *ngIf="!column.editTemplate && !!column.field && editOptions.formGroup.get(column.field)">
+            <input [formControl]="editOptions.formGroup.get(column.field)">
+          </ng-container>
+          <ng-container *ngIf="column.editTemplate">
+            <ng-template
+              [ngTemplateOutletContext]="{$implicit: editOptions.formGroup, rowIndex: i, column: column, data: dataItem, isNew: editOptions.isNew}"
+              [ngTemplateOutlet]="column.editTemplate.templateRef"></ng-template>
+          </ng-container>
+        </ng-container>
+      </td>
+    </tr>
+
+    <tr *ngIf="!data.length">
+      <td [colSpan]="columns.length">
+        Kayıt bulunmamaktadır.
+      </td>
+    </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+<div *ngIf="columns.find(hasFooter)" [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth"
+     class="ng-dg-footer">
+  <table>
+
+    <colgroup>
+      <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
+    </colgroup>
+
+    <tbody>
+    <tr>
+      <td *ngFor="let column of columns.toArray() || []">
+        <ng-template [ngTemplateOutletContext]="{}"
+                     [ngTemplateOutlet]="column.footerTemplate?.templateRef"></ng-template>
+      </td>
+    </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<div *ngIf="toolbar && (toolbarPosition === 'bottom' || toolbarPosition === 'both')" class="ng-dg-toolbar bottom">
+  <ng-template [ngTemplateOutletContext]="{}" [ngTemplateOutlet]="toolbar.templateRef"></ng-template>
+</div>
