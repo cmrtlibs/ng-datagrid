@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-datagrid": [
+        "dist/ng-datagrid"
+      ],
+      "ng-datagrid/*": [
+        "dist/ng-datagrid/*"
+      ]
+    }
   }
 }
