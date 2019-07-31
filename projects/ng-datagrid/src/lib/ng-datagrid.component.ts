@@ -23,7 +23,7 @@ export class NgDatagridComponent {
   @Output() add = new EventEmitter<NgDgEmitDatas>();
 
   @ContentChildren(NgDatagridColumnComponent) columns: QueryList<NgDatagridColumnComponent>;
-  @ContentChild(NgDatagridToolbarTemplateDirective) toolbar: NgDatagridToolbarTemplateDirective;
+  @ContentChild(NgDatagridToolbarTemplateDirective, {static: false}) toolbar: NgDatagridToolbarTemplateDirective;
 
   editOptions: NgDgEditOptions;
 
