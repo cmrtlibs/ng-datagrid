@@ -1,9 +1,9 @@
 import {Directive, TemplateRef} from '@angular/core';
 
 @Directive({
-  selector: '[ngDatagridColumnTemplate]'
+  selector: '[ngDatagridCellTemplate]'
 })
-export class NgDatagridColumnTemplateDirective {
+export class NgDatagridCellTemplateDirective {
 
   constructor(public templateRef: TemplateRef<any>) {
   }

@@ -37,7 +37,7 @@
       <td *ngFor="let column of columns.toArray()">
         <ng-container *ngIf="!column.editTemplate && !column.field">
           <ng-template [ngTemplateOutletContext]="{$implicit: undefined, rowIndex: -1, column: column}"
-                       [ngTemplateOutlet]="column.columnTemplate.templateRef"></ng-template>
+                       [ngTemplateOutlet]="column.cellTemplate.templateRef"></ng-template>
         </ng-container>
         <ng-container *ngIf="!column.editTemplate && !!column.field && editOptions.formGroup.get(column.field)">
           <input [formControl]="editOptions.formGroup.get(column.field)">
@@ -55,10 +55,10 @@
       <td *ngFor="let column of columns.toArray()">
         <ng-container
           *ngIf="!editOptions || editOptions.rowIndex !== i || (!editOptions.formGroup.get(column.field) && !column.editTemplate)">
-          <ng-container *ngIf="!column.columnTemplate">{{getField(dataItem, column.field)}}</ng-container>
-          <ng-container *ngIf="column.columnTemplate">
+          <ng-container *ngIf="!column.cellTemplate">{{getField(dataItem, column.field)}}</ng-container>
+          <ng-container *ngIf="column.cellTemplate">
             <ng-template [ngTemplateOutletContext]="{$implicit: dataItem, rowIndex: i, column: column}"
-                         [ngTemplateOutlet]="column.columnTemplate.templateRef"></ng-template>
+                         [ngTemplateOutlet]="column.cellTemplate.templateRef"></ng-template>
           </ng-container>
         </ng-container>
         <ng-container
