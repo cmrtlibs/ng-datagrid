@@ -1,6 +1,18 @@
 <ng-datagrid [data]="data">
+  <ng-template ngDatagridToolbarTemplate>
+    <button ngDatagridAddCommand>Add</button>
+  </ng-template>
+
   <ng-datagrid-column title="ID" field="ProductID" [width]="50"></ng-datagrid-column>
   <ng-datagrid-column title="Name" field="ProductName"></ng-datagrid-column>
   <ng-datagrid-column title="Price" field="UnitPrice"></ng-datagrid-column>
   <ng-datagrid-column title="Stock" field="UnitsInStock"></ng-datagrid-column>
+  <ng-datagrid-column [width]="150">
+    <ng-template ngDatagridCellTemplate>
+      <button ngDatagridEditCommand>Edit</button>
+      <button ngDatagridRemoveCommand>Remove</button>
+      <button ngDatagridSaveCommand>Save</button>
+      <button ngDatagridCancelCommand>Cancel</button>
+    </ng-template>
+  </ng-datagrid-column>
 </ng-datagrid>
