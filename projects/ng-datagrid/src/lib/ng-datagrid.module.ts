@@ -4,7 +4,7 @@ import {NgDatagridToolbarTemplateDirective} from './ng-datagrid-toolbar-template
 import {NgDatagridAddCommandDirective} from './ng-datagrid-column/ng-datagrid-add-command.directive';
 import {NgDatagridCancelCommandDirective} from './ng-datagrid-column/ng-datagrid-cancel-command.directive';
 import {NgDatagridColumnComponent} from './ng-datagrid-column/ng-datagrid-column.component';
-import {NgDatagridCellTemplateDirective} from './ng-datagrid-column/ng-datagrid-column-template.directive';
+import {NgDatagridCellTemplateDirective} from './ng-datagrid-column/ng-datagrid-cell-template.directive';
 import {NgDatagridEditCommandDirective} from './ng-datagrid-column/ng-datagrid-edit-command.directive';
 import {NgDatagridEditTemplateDirective} from './ng-datagrid-column/ng-datagrid-edit-template.directive';
 import {NgDatagridFooterTemplateDirective} from './ng-datagrid-column/ng-datagrid-footer-template.directive';
