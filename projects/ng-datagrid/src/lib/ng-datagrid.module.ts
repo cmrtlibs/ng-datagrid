@@ -33,7 +33,20 @@ import {ReactiveFormsModule} from '@angular/forms';
     CommonModule,
     ReactiveFormsModule,
   ],
-  exports: [NgDatagridComponent]
+  exports: [
+    NgDatagridComponent,
+    NgDatagridToolbarTemplateDirective,
+    NgDatagridAddCommandDirective,
+    NgDatagridCancelCommandDirective,
+    NgDatagridColumnComponent,
+    NgDatagridColumnTemplateDirective,
+    NgDatagridEditCommandDirective,
+    NgDatagridEditTemplateDirective,
+    NgDatagridFooterTemplateDirective,
+    NgDatagridHeaderTemplateDirective,
+    NgDatagridRemoveCommandDirective,
+    NgDatagridSaveCommandDirective,
+  ]
 })
 export class NgDatagridModule {
 }
