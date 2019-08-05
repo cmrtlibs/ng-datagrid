@@ -1,4 +1,4 @@
-import {Component, ContentChild, ContentChildren, EventEmitter, Input, Output, QueryList} from '@angular/core';
+import {Component, ContentChild, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList} from '@angular/core';
 import {NgDgEditOptions, NgDgEmitDatas, NgDgToolbarPosition} from './ng-datagrid.type';
 import {NgDatagridColumnComponent} from './ng-datagrid-column/ng-datagrid-column.component';
 import {NgDatagridToolbarTemplateDirective} from './ng-datagrid-toolbar-template.directive';
@@ -10,6 +10,8 @@ import {FormGroup} from '@angular/forms';
   styles: []
 })
 export class NgDatagridComponent {
+
+  @HostBinding('class') class = 'ng-datagrid';
 
   @Input() data: any[] = [];
   @Input() pageable: boolean;
