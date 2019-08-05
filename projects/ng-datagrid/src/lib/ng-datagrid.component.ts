@@ -7,7 +7,7 @@ import {FormGroup} from '@angular/forms';
 @Component({
   selector: 'ng-datagrid',
   templateUrl: './ng-datagrid.component.html',
-  styles: []
+  styleUrls: ['./ng-datagrid.component.scss'],
 })
 export class NgDatagridComponent {
 
