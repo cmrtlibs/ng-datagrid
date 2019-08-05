@@ -93,13 +93,13 @@ $hoverColor: #ededed;
             width: 100%;
           }
 
-          [materialDataTableEditCommand], [materialDataTableRemoveCommand] {
+          [ngDatagridEditCommand], [ngDatagridRemoveCommand] {
             display: none;
           }
         }
 
         &:not(.ng-dg-editable) {
-          [materialDataTableSaveCommand], [materialDataTableCancelCommand] {
+          [ngDatagridSaveCommand], [ngDatagridCancelCommand] {
             display: none;
           }
         }
