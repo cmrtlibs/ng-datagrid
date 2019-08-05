@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {sampleProducts} from './products';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ng-datagrid-project';
+  data = sampleProducts;
 }
