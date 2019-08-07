@@ -1,14 +1,4 @@
-import {
-  Component,
-  ContentChild,
-  ContentChildren,
-  EventEmitter,
-  HostBinding,
-  Input,
-  Output,
-  QueryList,
-  ViewEncapsulation
-} from '@angular/core';
+import {Component, ContentChild, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList} from '@angular/core';
 import {NgDgEditOptions, NgDgEmitDatas, NgDgToolbarPosition} from './ng-datagrid.type';
 import {NgDatagridColumnComponent} from './ng-datagrid-column/ng-datagrid-column.component';
 import {NgDatagridToolbarTemplateDirective} from './ng-datagrid-toolbar-template.directive';
@@ -24,8 +14,10 @@ export class NgDatagridComponent {
 
   @Input() data: any[] = [];
   @Input() pageable: boolean;
-  @Input() height: number;
+
   @Input() toolbarPosition: NgDgToolbarPosition = 'top';
+  @Input() skip: number;
+  @Input() pageSize: number;
 
   @Output() edit = new EventEmitter<NgDgEmitDatas>();
   @Output() save = new EventEmitter<NgDgEmitDatas>();
