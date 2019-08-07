@@ -17,8 +17,6 @@ import {FormGroup} from '@angular/forms';
 @Component({
   selector: 'ng-datagrid',
   templateUrl: './ng-datagrid.component.html',
-  styleUrls: ['./ng-datagrid.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class NgDatagridComponent {
 

@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ng-datagrid && yarn style-copy",
+    "style-copy": "cp projects/ng-datagrid/src/style.scss dist/ng-datagrid/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
