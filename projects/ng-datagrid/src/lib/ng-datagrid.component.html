@@ -3,27 +3,29 @@
 </div>
 
 <div [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth" class="ng-dg-header">
-  <table>
-    <colgroup>
-      <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
-    </colgroup>
+  <div class="ng-dg-header-inner" [scrollLeft]="containerElem.scrollLeft">
+    <table>
+      <colgroup>
+        <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
+      </colgroup>
 
-    <thead>
-    <tr>
-      <th *ngFor="let column of columns.toArray() || []">
-        <ng-container *ngIf="!column.headerTemplate">{{column.title}}</ng-container>
-        <ng-container *ngIf="column.headerTemplate">
-          <ng-template [ngTemplateOutletContext]="{}"
-                       [ngTemplateOutlet]="column.headerTemplate.templateRef"></ng-template>
-        </ng-container>
-      </th>
-    </tr>
-    </thead>
+      <thead>
+      <tr>
+        <th *ngFor="let column of columns.toArray() || []">
+          <ng-container *ngIf="!column.headerTemplate">{{column.title}}</ng-container>
+          <ng-container *ngIf="column.headerTemplate">
+            <ng-template [ngTemplateOutletContext]="{}"
+                         [ngTemplateOutlet]="column.headerTemplate.templateRef"></ng-template>
+          </ng-container>
+        </th>
+      </tr>
+      </thead>
 
-  </table>
+    </table>
+  </div>
 </div>
 
-<div #containerElem class="ng-dg-container">
+<div #containerElem class="ng-dg-container" (scroll)="$event">
 
   <table>
 

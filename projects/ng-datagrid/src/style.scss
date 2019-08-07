@@ -10,7 +10,12 @@ $hoverColor: #ededed;
   width: 100%;
   border: 1px solid $borderColor;
   background-color: #ffffff;
+  box-sizing: border-box;
   font-family: 'Roboto';
+
+  .ng-dg-alt {
+    background-color: $altColor;
+  }
 
   .ng-dg-toolbar {
     color: $textColor;
@@ -30,6 +35,16 @@ $hoverColor: #ededed;
     padding: 0;
     background-color: $headerColor;
     border-bottom: 1px solid $borderColor;
+
+    & > .ng-dg-header-inner {
+      overflow-x: auto;
+      border-right: 1px solid $borderColor;
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+    }
   }
 
   .ng-dg-footer {
@@ -78,10 +93,6 @@ $hoverColor: #ededed;
 
         td:last-child {
           border-right: 1px solid $borderColor;
-        }
-
-        &.ng-dg-alt {
-          background-color: $altColor;
         }
 
         &:hover {
