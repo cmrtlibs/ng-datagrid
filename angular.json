@@ -28,7 +28,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "dist/ng-datagrid/style.scss"
+              "projects/ng-datagrid/src/style.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
