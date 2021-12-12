@@ -6,7 +6,11 @@
   <div class="ng-dg-header-inner" [scrollLeft]="containerElem.scrollLeft">
     <table>
       <colgroup>
-        <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
+        <col *ngFor="let column of columns.toArray() || []"
+             [style.width.px]="column.width"
+             [style.minWidth.px]="column.minWidth"
+             [style.maxWidth.px]="column.maxWidth"
+        >
       </colgroup>
 
       <thead>
@@ -30,7 +34,11 @@
   <table>
 
     <colgroup>
-      <col *ngFor="let column of columns.toArray() || []" [style.width.px]="column.width">
+      <col *ngFor="let column of columns.toArray() || []"
+           [style.width.px]="column.width"
+           [style.minWidth.px]="column.minWidth"
+           [style.maxWidth.px]="column.maxWidth"
+      >
     </colgroup>
 
     <tbody>
