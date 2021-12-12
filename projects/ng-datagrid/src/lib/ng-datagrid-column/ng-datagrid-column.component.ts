@@ -10,10 +10,10 @@ import {NgDatagridHeaderTemplateDirective} from './ng-datagrid-header-template.d
 })
 export class NgDatagridColumnComponent {
 
-  @ContentChild(NgDatagridHeaderTemplateDirective, {static: false}) headerTemplate: NgDatagridHeaderTemplateDirective;
-  @ContentChild(NgDatagridCellTemplateDirective, {static: false}) cellTemplate: NgDatagridCellTemplateDirective;
-  @ContentChild(NgDatagridFooterTemplateDirective, {static: false}) footerTemplate: NgDatagridFooterTemplateDirective;
-  @ContentChild(NgDatagridEditTemplateDirective, {static: false}) editTemplate: NgDatagridEditTemplateDirective;
+  @ContentChild(NgDatagridHeaderTemplateDirective) headerTemplate: NgDatagridHeaderTemplateDirective;
+  @ContentChild(NgDatagridCellTemplateDirective) cellTemplate: NgDatagridCellTemplateDirective;
+  @ContentChild(NgDatagridFooterTemplateDirective) footerTemplate: NgDatagridFooterTemplateDirective;
+  @ContentChild(NgDatagridEditTemplateDirective) editTemplate: NgDatagridEditTemplateDirective;
 
   @Input() title: string;
   @Input() field: string;
