@@ -31,8 +31,7 @@
               "src/styles.scss",
               "projects/ng-datagrid/src/style.scss"
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
