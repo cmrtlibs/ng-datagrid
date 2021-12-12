@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { NgDatagridColumnComponent } from './ng-datagrid-column.component';
 
@@ -6,7 +6,7 @@ describe('NgDatagridColumnComponent', () => {
   let component: NgDatagridColumnComponent;
   let fixture: ComponentFixture<NgDatagridColumnComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ NgDatagridColumnComponent ]
     })
