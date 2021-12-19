@@ -18,7 +18,6 @@ export class NgDatagridColumnComponent {
   @Input() title: string;
   @Input() field: string;
   @Input() width: number;
-  @Input() minWidth: number;
-  @Input() maxWidth: number;
+  @Input() editable: boolean;
 
 }

@@ -51,6 +51,20 @@ $hoverColor: #ededed;
     padding: 0 15px 0 0;
     background-color: $headerColor;
     border-top: 1px solid $borderColor;
+
+    & > .ng-dg-footer-inner {
+      overflow-x: auto;
+      border-right: 1px solid $borderColor;
+
+      &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+      }
+
+      td {
+        font-weight: bold;
+      }
+    }
   }
 
   .ng-dg-container {
@@ -101,7 +115,7 @@ $hoverColor: #ededed;
 
         &.ng-dg-editable {
           input {
-            width: 100%;
+            width: auto;
           }
 
           [ngDatagridEditCommand], [ngDatagridRemoveCommand] {

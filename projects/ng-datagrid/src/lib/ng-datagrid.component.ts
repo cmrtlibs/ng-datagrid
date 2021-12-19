@@ -1,4 +1,13 @@
-import {Component, ContentChild, ContentChildren, EventEmitter, HostBinding, Input, Output, QueryList} from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ContentChildren,
+  EventEmitter,
+  HostBinding,
+  Input,
+  Output,
+  QueryList
+} from '@angular/core';
 import {NgDgEditOptions, NgDgEmitDatas, NgDgToolbarPosition} from './ng-datagrid.type';
 import {NgDatagridColumnComponent} from './ng-datagrid-column/ng-datagrid-column.component';
 import {NgDatagridToolbarTemplateDirective} from './ng-datagrid-toolbar-template.directive';
@@ -11,6 +20,8 @@ import {FormGroup} from '@angular/forms';
 export class NgDatagridComponent {
 
   @HostBinding('class') class = 'ng-datagrid';
+  @HostBinding('style.height.px') @Input() height: number;
+  @HostBinding('style.width.px') @Input() width: number;
 
   @Input() data: any[] = [];
   @Input() pageable: boolean;
@@ -42,6 +53,7 @@ export class NgDatagridComponent {
   }
 
   editRow(rowIndex: number, formGroup: FormGroup): void {
+    if (rowIndex < 0) throw new Error('rowIndex can\'t be negative');
     this.editOptions = {rowIndex, formGroup, isNew: false};
   }
 

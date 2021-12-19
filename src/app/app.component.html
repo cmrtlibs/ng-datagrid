@@ -1,18 +1,30 @@
-<ng-datagrid [data]="data">
+<ng-datagrid #grid [data]="data" [height]="400">
   <ng-template ngDatagridToolbarTemplate>
-    <button ngDatagridAddCommand>Add</button>
+    <button (click)="grid.addRow(createFormGroup({}))">Add</button>
   </ng-template>
 
-  <ng-datagrid-column title="ID" field="ProductID" [width]="50"></ng-datagrid-column>
+  <ng-datagrid-column title="ID" field="ProductID" [width]="50" [editable]="false"></ng-datagrid-column>
   <ng-datagrid-column title="Name" field="ProductName"></ng-datagrid-column>
   <ng-datagrid-column title="Price" field="UnitPrice"></ng-datagrid-column>
-  <ng-datagrid-column title="Stock" field="UnitsInStock"></ng-datagrid-column>
+  <ng-datagrid-column title="Stock" field="UnitsInStock">
+    <ng-template ngDatagridCellTemplate let-dataItem>
+      {{dataItem.UnitsInStock}} Adet
+    </ng-template>
+    <ng-template ngDatagridEditTemplate let-formGroup>
+      <input type="number" [formControl]="formGroup.get('UnitsInStock')" />
+    </ng-template>
+    <ng-template ngDatagridFooterTemplate>
+      100
+    </ng-template>
+  </ng-datagrid-column>
   <ng-datagrid-column [width]="150">
-    <ng-template ngDatagridCellTemplate>
-      <button ngDatagridEditCommand>Edit</button>
-      <button ngDatagridRemoveCommand>Remove</button>
-      <button ngDatagridSaveCommand>Save</button>
-      <button ngDatagridCancelCommand>Cancel</button>
+    <ng-template ngDatagridCellTemplate let-rowIndex="rowIndex" let-item>
+      <button (click)="grid.editRow(rowIndex, createFormGroup(item))">Edit</button>
+      <button (click)="remove(rowIndex)">Remove</button>
+    </ng-template>
+    <ng-template ngDatagridEditTemplate let-formGroup let-rowIndex="rowIndex" let-isNew="isNew">
+      <button (click)="save(formGroup, isNew, rowIndex)">Save</button>
+      <button (click)="grid.closeRow(rowIndex)">Cancel</button>
     </ng-template>
   </ng-datagrid-column>
 </ng-datagrid>

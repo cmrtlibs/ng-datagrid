@@ -1,6 +1,7 @@
 import {Directive, Host, HostListener, ViewContainerRef} from '@angular/core';
 import {NgDatagridColumnComponent} from './ng-datagrid-column.component';
 import {NgDatagridComponent} from '../ng-datagrid.component';
+import {NgDatagridCellTemplateDirective} from './ng-datagrid-cell-template.directive';
 
 @Directive({
   selector: '[ngDatagridEditCommand]'
@@ -14,8 +15,9 @@ export class NgDatagridEditCommandDirective {
     isNew: boolean,
   };
 
-  constructor(@Host() private grid: NgDatagridComponent, private vcr: ViewContainerRef) {
-    this.context = (this.vcr as any)._view.context;
+  constructor(@Host() private grid: NgDatagridComponent, @Host() cellTemp: NgDatagridCellTemplateDirective, private vcr: ViewContainerRef) {
+    // this.context = (this.vcr as any)._view.context;
+    // console.log(cellTemp)
   }
 
   @HostListener('click')

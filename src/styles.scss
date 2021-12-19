@@ -5,3 +5,17 @@ body {
   padding: 0;
   height: 100vh;
 }
+::-webkit-scrollbar {
+  width: .4em;
+  height: .4em
+}
+::-webkit-scrollbar-button {
+  background: #ccc;
+  display: none;
+}
+::-webkit-scrollbar-track-piece {
+  background: #888;
+}
+::-webkit-scrollbar-thumb {
+  background: #0e0e0e;
+}
