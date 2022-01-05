@@ -93,10 +93,6 @@ $hoverColor: #ededed;
           font-weight: 700 !important;
           text-align: left;
           vertical-align: bottom;
-
-          &:last-child {
-            border-right: 1px solid $borderColor;
-          }
         }
       }
     }
@@ -104,10 +100,6 @@ $hoverColor: #ededed;
     tbody {
       tr {
         height: auto !important;
-
-        td:last-child {
-          border-right: 1px solid $borderColor;
-        }
 
         &:hover {
           background-color: $hoverColor;

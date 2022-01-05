@@ -3,10 +3,10 @@
     <button (click)="grid.addRow(createFormGroup({}))">Add</button>
   </ng-template>
 
-  <ng-datagrid-column title="ID" field="ProductID" [width]="50" [editable]="false"></ng-datagrid-column>
-  <ng-datagrid-column title="Name" field="ProductName"></ng-datagrid-column>
-  <ng-datagrid-column title="Price" field="UnitPrice"></ng-datagrid-column>
-  <ng-datagrid-column title="Stock" field="UnitsInStock">
+  <ng-datagrid-column title="ID" field="ProductID" [editable]="false" [width]="200"></ng-datagrid-column>
+  <ng-datagrid-column title="Name" field="ProductName" [width]="200"></ng-datagrid-column>
+  <ng-datagrid-column title="Price" field="UnitPrice" [width]="200"></ng-datagrid-column>
+  <ng-datagrid-column title="Stock" field="UnitsInStock" [width]="200">
     <ng-template ngDatagridCellTemplate let-dataItem>
       {{dataItem.UnitsInStock}} Adet
     </ng-template>

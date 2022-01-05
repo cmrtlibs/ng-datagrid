@@ -1,15 +1,15 @@
 import {FormGroup} from '@angular/forms';
 import {NgDatagridComponent} from './ng-datagrid.component';
 
-export type NgDgToolbarPosition = 'top' | 'bottom' | 'both';
+export type NgDatagridToolbarPosition = 'top' | 'bottom' | 'both';
 
-export interface NgDgEditOptions {
+export interface NgDatagridEditOptions {
   rowIndex: number;
   formGroup: FormGroup;
   isNew: boolean;
 }
 
-export interface NgDgEmitDatas {
+export interface NgDatagridDataEmit {
   sender: NgDatagridComponent;
   formGroup?: FormGroup;
   isNew?: boolean;

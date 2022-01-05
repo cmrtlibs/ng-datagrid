@@ -24,8 +24,8 @@ export class NgDatagridEditCommandDirective {
   onClick() {
     this.grid.edit.emit({
       dataItem: this.context.$implicit,
-      formGroup: this.grid.editOptions ? this.grid.editOptions.formGroup : undefined,
-      isNew: this.grid.editOptions ? this.grid.editOptions.isNew : undefined,
+      formGroup: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].formGroup : undefined,
+      isNew: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].isNew : undefined,
       rowIndex: this.context.rowIndex,
       sender: this.grid,
     });

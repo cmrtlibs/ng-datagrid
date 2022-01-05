@@ -1,14 +1,5 @@
-import {
-  Component,
-  ContentChild,
-  ContentChildren,
-  EventEmitter,
-  HostBinding,
-  Input,
-  Output,
-  QueryList
-} from '@angular/core';
-import {NgDgEditOptions, NgDgEmitDatas, NgDgToolbarPosition} from './ng-datagrid.type';
+import {Component, ContentChild, ContentChildren, EventEmitter, HostBinding, Input, QueryList} from '@angular/core';
+import {NgDatagridDataEmit, NgDatagridEditOptions, NgDatagridToolbarPosition} from './ng-datagrid.type';
 import {NgDatagridColumnComponent} from './ng-datagrid-column/ng-datagrid-column.component';
 import {NgDatagridToolbarTemplateDirective} from './ng-datagrid-toolbar-template.directive';
 import {FormGroup} from '@angular/forms';
@@ -26,20 +17,26 @@ export class NgDatagridComponent {
   @Input() data: any[] = [];
   @Input() pageable: boolean;
 
-  @Input() toolbarPosition: NgDgToolbarPosition = 'top';
+  @Input() toolbarPosition: NgDatagridToolbarPosition = 'top';
   @Input() skip: number;
   @Input() pageSize: number;
 
-  @Output() edit = new EventEmitter<NgDgEmitDatas>();
-  @Output() save = new EventEmitter<NgDgEmitDatas>();
-  @Output() cancel = new EventEmitter<NgDgEmitDatas>();
-  @Output() remove = new EventEmitter<NgDgEmitDatas>();
-  @Output() add = new EventEmitter<NgDgEmitDatas>();
+  // TODO: feature
+  /*@Output()*/
+  edit = new EventEmitter<NgDatagridDataEmit>();
+  /*@Output()*/
+  save = new EventEmitter<NgDatagridDataEmit>();
+  /*@Output()*/
+  cancel = new EventEmitter<NgDatagridDataEmit>();
+  /*@Output()*/
+  remove = new EventEmitter<NgDatagridDataEmit>();
+  /*@Output()*/
+  add = new EventEmitter<NgDatagridDataEmit>();
 
   @ContentChildren(NgDatagridColumnComponent) columns: QueryList<NgDatagridColumnComponent>;
   @ContentChild(NgDatagridToolbarTemplateDirective) toolbar: NgDatagridToolbarTemplateDirective;
 
-  editOptions: NgDgEditOptions;
+  editOptions: { [rowIndex: number]: NgDatagridEditOptions } = {};
 
   hasFooter = (i: NgDatagridColumnComponent) => !!i.footerTemplate;
 
@@ -54,16 +51,16 @@ export class NgDatagridComponent {
 
   editRow(rowIndex: number, formGroup: FormGroup): void {
     if (rowIndex < 0) throw new Error('rowIndex can\'t be negative');
-    this.editOptions = {rowIndex, formGroup, isNew: false};
+    this.editOptions[rowIndex] = {rowIndex, formGroup, isNew: false};
   }
 
   addRow(formGroup: FormGroup): void {
-    this.editOptions = {rowIndex: -1, formGroup, isNew: true};
+    this.editOptions[-1] = {rowIndex: -1, formGroup, isNew: true};
   }
 
   closeRow(rowIndex: number) {
-    if (this.editOptions.rowIndex === rowIndex) {
-      this.editOptions = undefined;
+    if (this.editOptions[rowIndex]) {
+      delete this.editOptions[rowIndex];
     }
   }
 

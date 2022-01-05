@@ -41,7 +41,7 @@
   <ng-template [ngTemplateOutletContext]="{}" [ngTemplateOutlet]="toolbar.templateRef"></ng-template>
 </div>
 
-<div [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth" class="ng-dg-header">
+<div [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth - 1" class="ng-dg-header">
   <div class="ng-dg-header-inner" [scrollLeft]="containerElem.scrollLeft">
     <table>
       <colgroup>
@@ -78,21 +78,21 @@
 
     <tbody>
 
-    <tr *ngIf="editOptions && editOptions.isNew" class="ng-dg-alt ng-dg-editable">
+    <tr *ngIf="editOptions && editOptions[-1]" class="ng-dg-alt ng-dg-editable">
       <td *ngFor="let column of columns.toArray()">
         <ng-template
           [ngTemplateOutlet]="cellTemplate"
-          [ngTemplateOutletContext]="{dataItem: undefined, column, rowIndex: -1, formGroup: editOptions.formGroup, isNew: true, isEditing: column.editable !== false}"
+          [ngTemplateOutletContext]="{dataItem: undefined, column, rowIndex: -1, formGroup: editOptions[-1].formGroup, isNew: true, isEditing: column.editable !== false}"
         ></ng-template>
       </td>
     </tr>
 
     <tr *ngFor="let dataItem of data || []; let rowIndex = index"
-        [ngClass]="{'ng-dg-alt': rowIndex % 2, 'ng-dg-editable': editOptions?.rowIndex === rowIndex}">
+        [ngClass]="{'ng-dg-alt': rowIndex % 2, 'ng-dg-editable': !!editOptions[rowIndex]}">
       <td *ngFor="let column of columns.toArray()">
         <ng-template
           [ngTemplateOutlet]="cellTemplate"
-          [ngTemplateOutletContext]="{dataItem, column, rowIndex, formGroup: editOptions?.formGroup, isNew: false, isEditing: column.editable !== false && editOptions?.rowIndex === rowIndex && (!!editOptions.formGroup.get(column.field) || !!column.editTemplate)}"
+          [ngTemplateOutletContext]="{dataItem, column, rowIndex, formGroup: editOptions[rowIndex]?.formGroup, isNew: false, isEditing: column.editable !== false && !!editOptions[rowIndex] && (editOptions[rowIndex].formGroup.contains(column.field) || !!column.editTemplate)}"
         ></ng-template>
       </td>
     </tr>
@@ -109,7 +109,7 @@
 
 </div>
 
-<div *ngIf="columns.find(hasFooter)" [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth"
+<div *ngIf="columns.find(hasFooter)" [style.paddingRight.px]="containerElem.offsetWidth - containerElem.clientWidth - 1"
      class="ng-dg-footer">
   <div class="ng-dg-footer-inner" [scrollLeft]="containerElem.scrollLeft">
     <table>
