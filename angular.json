@@ -152,7 +152,6 @@
       }
     }
   },
-  "defaultProject": "ng-datagrid-project",
   "cli": {
     "packageManager": "yarn"
   }

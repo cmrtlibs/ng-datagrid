@@ -2,7 +2,7 @@ import {Component, ContentChild, ContentChildren, EventEmitter, HostBinding, Inp
 import {NgDatagridDataEmit, NgDatagridEditOptions, NgDatagridToolbarPosition} from './ng-datagrid.type';
 import {NgDatagridColumnComponent} from './ng-datagrid-column/ng-datagrid-column.component';
 import {NgDatagridToolbarTemplateDirective} from './ng-datagrid-toolbar-template.directive';
-import {FormGroup} from '@angular/forms';
+import {UntypedFormGroup} from '@angular/forms';
 
 @Component({
   selector: 'ng-datagrid',
@@ -49,12 +49,12 @@ export class NgDatagridComponent {
     return data;
   }
 
-  editRow(rowIndex: number, formGroup: FormGroup): void {
+  editRow(rowIndex: number, formGroup: UntypedFormGroup): void {
     if (rowIndex < 0) throw new Error('rowIndex can\'t be negative');
     this.editOptions[rowIndex] = {rowIndex, formGroup, isNew: false};
   }
 
-  addRow(formGroup: FormGroup): void {
+  addRow(formGroup: UntypedFormGroup): void {
     this.editOptions[-1] = {rowIndex: -1, formGroup, isNew: true};
   }
 
