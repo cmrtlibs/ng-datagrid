@@ -1,11 +1,12 @@
 import {Directive, Host, HostListener, ViewContainerRef} from '@angular/core';
-import {NgDatagridColumnComponent} from './ng-datagrid-column.component';
-import {NgDatagridComponent} from '../ng-datagrid.component';
+import {NgDatagridColumnComponent} from '../ng-datagrid-column.component';
+import {NgDatagridComponent} from '../../ng-datagrid.component';
+import {NgDatagridCellTemplateDirective} from '../template/ng-datagrid-cell-template.directive';
 
 @Directive({
-  selector: '[ngDatagridRemoveCommand]'
+  selector: '[ngDatagridEditCommand]'
 })
-export class NgDatagridRemoveCommandDirective {
+export class NgDatagridEditCommandDirective {
 
   private context: {
     $implicit: any,
@@ -14,13 +15,14 @@ export class NgDatagridRemoveCommandDirective {
     isNew: boolean,
   };
 
-  constructor(@Host() private grid: NgDatagridComponent, private vcr: ViewContainerRef) {
-    this.context = (this.vcr as any)._view.context;
+  constructor(@Host() private grid: NgDatagridComponent, @Host() cellTemp: NgDatagridCellTemplateDirective, private vcr: ViewContainerRef) {
+    // this.context = (this.vcr as any)._view.context;
+    // console.log(cellTemp)
   }
 
   @HostListener('click')
   onClick() {
-    this.grid.remove.emit({
+    this.grid.edit.emit({
       dataItem: this.context.$implicit,
       formGroup: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].formGroup : undefined,
       isNew: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].isNew : undefined,

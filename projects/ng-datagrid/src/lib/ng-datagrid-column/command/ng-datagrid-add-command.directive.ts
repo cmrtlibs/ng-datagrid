@@ -1,5 +1,5 @@
 import {Directive, Host, HostListener} from '@angular/core';
-import {NgDatagridComponent} from '../ng-datagrid.component';
+import {NgDatagridComponent} from '../../ng-datagrid.component';
 
 @Directive({
   selector: '[ngDatagridAddCommand]'

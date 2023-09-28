@@ -1,7 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {sampleProducts} from './products';
 import {UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {NgDatagridComponent} from '../../projects/ng-datagrid/src/lib/ng-datagrid.component';
+import {NgDatagridComponent} from 'ng-datagrid';
 
 @Component({
   selector: 'app-root',

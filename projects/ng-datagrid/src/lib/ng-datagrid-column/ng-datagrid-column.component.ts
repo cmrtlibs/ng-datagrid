@@ -1,8 +1,8 @@
 import {Component, ContentChild, Input} from '@angular/core';
-import {NgDatagridCellTemplateDirective} from './ng-datagrid-cell-template.directive';
-import {NgDatagridEditTemplateDirective} from './ng-datagrid-edit-template.directive';
-import {NgDatagridFooterTemplateDirective} from './ng-datagrid-footer-template.directive';
-import {NgDatagridHeaderTemplateDirective} from './ng-datagrid-header-template.directive';
+import {NgDatagridCellTemplateDirective} from './template/ng-datagrid-cell-template.directive';
+import {NgDatagridEditTemplateDirective} from './template/ng-datagrid-edit-template.directive';
+import {NgDatagridFooterTemplateDirective} from './template/ng-datagrid-footer-template.directive';
+import {NgDatagridHeaderTemplateDirective} from './template/ng-datagrid-header-template.directive';
 
 @Component({
   selector: 'ng-datagrid-column',
@@ -19,5 +19,5 @@ export class NgDatagridColumnComponent {
   @Input() field: string;
   @Input() width: number;
   @Input() editable: boolean;
-
+ö
 }

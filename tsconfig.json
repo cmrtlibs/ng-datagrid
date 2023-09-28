@@ -20,7 +20,8 @@
     ],
     "paths": {
       "ng-datagrid": [
-        "dist/ng-datagrid"
+        "dist/ng-datagrid",
+        "projects/ng-datagrid/src/public-api.ts"
       ],
       "ng-datagrid/*": [
         "dist/ng-datagrid/*"

@@ -1,12 +1,11 @@
 import {Directive, Host, HostListener, ViewContainerRef} from '@angular/core';
-import {NgDatagridColumnComponent} from './ng-datagrid-column.component';
-import {NgDatagridComponent} from '../ng-datagrid.component';
-import {NgDatagridCellTemplateDirective} from './ng-datagrid-cell-template.directive';
+import {NgDatagridColumnComponent} from '../ng-datagrid-column.component';
+import {NgDatagridComponent} from '../../ng-datagrid.component';
 
 @Directive({
-  selector: '[ngDatagridEditCommand]'
+  selector: '[ngDatagridSaveCommand]'
 })
-export class NgDatagridEditCommandDirective {
+export class NgDatagridSaveCommandDirective {
 
   private context: {
     $implicit: any,
@@ -15,14 +14,13 @@ export class NgDatagridEditCommandDirective {
     isNew: boolean,
   };
 
-  constructor(@Host() private grid: NgDatagridComponent, @Host() cellTemp: NgDatagridCellTemplateDirective, private vcr: ViewContainerRef) {
-    // this.context = (this.vcr as any)._view.context;
-    // console.log(cellTemp)
+  constructor(@Host() private grid: NgDatagridComponent, private vcr: ViewContainerRef) {
+    this.context = (this.vcr as any)._view.context;
   }
 
   @HostListener('click')
   onClick() {
-    this.grid.edit.emit({
+    this.grid.save.emit({
       dataItem: this.context.$implicit,
       formGroup: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].formGroup : undefined,
       isNew: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].isNew : undefined,

@@ -1,6 +1,6 @@
 import {Directive, Host, HostListener, ViewContainerRef} from '@angular/core';
-import {NgDatagridComponent} from '../ng-datagrid.component';
-import {NgDatagridColumnComponent} from './ng-datagrid-column.component';
+import {NgDatagridComponent} from '../../ng-datagrid.component';
+import {NgDatagridColumnComponent} from '../ng-datagrid-column.component';
 
 @Directive({
   selector: '[ngDatagridCancelCommand]'

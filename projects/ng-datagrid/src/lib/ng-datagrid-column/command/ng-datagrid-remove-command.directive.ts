@@ -1,11 +1,11 @@
 import {Directive, Host, HostListener, ViewContainerRef} from '@angular/core';
-import {NgDatagridColumnComponent} from './ng-datagrid-column.component';
-import {NgDatagridComponent} from '../ng-datagrid.component';
+import {NgDatagridColumnComponent} from '../ng-datagrid-column.component';
+import {NgDatagridComponent} from '../../ng-datagrid.component';
 
 @Directive({
-  selector: '[ngDatagridSaveCommand]'
+  selector: '[ngDatagridRemoveCommand]'
 })
-export class NgDatagridSaveCommandDirective {
+export class NgDatagridRemoveCommandDirective {
 
   private context: {
     $implicit: any,
@@ -20,7 +20,7 @@ export class NgDatagridSaveCommandDirective {
 
   @HostListener('click')
   onClick() {
-    this.grid.save.emit({
+    this.grid.remove.emit({
       dataItem: this.context.$implicit,
       formGroup: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].formGroup : undefined,
       isNew: this.grid.editOptions ? this.grid.editOptions[this.context.rowIndex].isNew : undefined,
