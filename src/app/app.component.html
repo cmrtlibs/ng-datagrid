@@ -5,6 +5,7 @@
 
   <ng-datagrid-column title="ID" field="ProductID" [editable]="false" [width]="200"></ng-datagrid-column>
   <ng-datagrid-column title="Name" field="ProductName" [width]="200"></ng-datagrid-column>
+  <ng-datagrid-column title="Category Name" field="Category.CategoryName" [width]="200"></ng-datagrid-column>
   <ng-datagrid-column title="Price" field="UnitPrice" [width]="200"></ng-datagrid-column>
   <ng-datagrid-column title="Stock" field="UnitsInStock" [width]="200">
     <ng-template ngDatagridCellTemplate let-dataItem>

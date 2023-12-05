@@ -16,3 +16,7 @@ export interface NgDatagridDataEmit {
   dataItem?: any;
   rowIndex?: number;
 }
+
+export interface NgDatagridColumnFieldFn {
+  (dataItem: object): any;
+}
