@@ -1,4 +1,4 @@
-<ng-datagrid #grid [data]="data" [height]="400">
+<ng-datagrid #grid [data]="data()" [height]="400">
   <ng-template ngDatagridToolbarTemplate>
     <button (click)="grid.addRow(createFormGroup({}))">Add</button>
   </ng-template>
@@ -9,13 +9,13 @@
   <ng-datagrid-column title="Price" field="UnitPrice" [width]="200"></ng-datagrid-column>
   <ng-datagrid-column title="Stock" field="UnitsInStock" [width]="200">
     <ng-template ngDatagridCellTemplate let-dataItem>
-      {{dataItem.UnitsInStock}} Adet
+      {{ dataItem.UnitsInStock }} Piece
     </ng-template>
     <ng-template ngDatagridEditTemplate let-formGroup>
-      <input type="number" [formControl]="formGroup.get('UnitsInStock')" />
+      <input type="number" [formControl]="formGroup.get('UnitsInStock')"/>
     </ng-template>
     <ng-template ngDatagridFooterTemplate>
-      100
+      {{ stockTotal() }}
     </ng-template>
   </ng-datagrid-column>
   <ng-datagrid-column [width]="150">
